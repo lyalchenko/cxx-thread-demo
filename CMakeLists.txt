@@ -1,0 +1,28 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
+PROJECT(ThreadExamples CXX)
+
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+SET(CMAKE_CXX_STANDARD 20)
+
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pthread")
+
+
+ADD_EXECUTABLE(thread-no-join
+    main.cpp
+)
+
+
+ADD_EXECUTABLE(thread-with-join
+    main.cpp
+)
+TARGET_COMPILE_DEFINITIONS(thread-with-join
+    PUBLIC EXAMPLE_WITH_JOIN
+)
+
+ADD_EXECUTABLE(thread-with-detach
+    main.cpp
+)
+TARGET_COMPILE_DEFINITIONS(thread-with-detach
+    PUBLIC EXAMPLE_WITH_DETACH
+)
